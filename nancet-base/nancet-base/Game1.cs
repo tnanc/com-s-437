@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
-namespace nancet_Minigolf
+namespace nancet_base
 {
     public class Game1 : Game
     {

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nancet-Minigolf", "nancet-Minigolf\nancet-Minigolf.csproj", "{258854A9-3E2B-4D06-9142-18415933D48F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nancet-base", "nancet-base\nancet-base.csproj", "{9ADD8A3F-721C-4A90-BAE4-744F49142785}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{258854A9-3E2B-4D06-9142-18415933D48F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{258854A9-3E2B-4D06-9142-18415933D48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{258854A9-3E2B-4D06-9142-18415933D48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{258854A9-3E2B-4D06-9142-18415933D48F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9ADD8A3F-721C-4A90-BAE4-744F49142785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9ADD8A3F-721C-4A90-BAE4-744F49142785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9ADD8A3F-721C-4A90-BAE4-744F49142785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9ADD8A3F-721C-4A90-BAE4-744F49142785}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {638A9CD6-2022-4D5C-ACC6-1965216EB71E}
+		SolutionGuid = {B4FCEC2B-7959-40F2-832C-0320B80B6F8A}
 	EndGlobalSection
 EndGlobal

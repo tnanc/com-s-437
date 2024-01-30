@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\tnanc\\Desktop\\Academic\\com-s-437\\nancet-Minigolf\\nancet-Minigolf\\nancet-Minigolf.csproj": {}
+    "C:\\Users\\tnanc\\Desktop\\Academic\\com-s-437\\nancet-base\\nancet-base\\nancet-base.csproj": {}
   },
   "projects": {
-    "C:\\Users\\tnanc\\Desktop\\Academic\\com-s-437\\nancet-Minigolf\\nancet-Minigolf\\nancet-Minigolf.csproj": {
+    "C:\\Users\\tnanc\\Desktop\\Academic\\com-s-437\\nancet-base\\nancet-base\\nancet-base.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\tnanc\\Desktop\\Academic\\com-s-437\\nancet-Minigolf\\nancet-Minigolf\\nancet-Minigolf.csproj",
-        "projectName": "nancet-Minigolf",
-        "projectPath": "C:\\Users\\tnanc\\Desktop\\Academic\\com-s-437\\nancet-Minigolf\\nancet-Minigolf\\nancet-Minigolf.csproj",
+        "projectUniqueName": "C:\\Users\\tnanc\\Desktop\\Academic\\com-s-437\\nancet-base\\nancet-base\\nancet-base.csproj",
+        "projectName": "nancet-base",
+        "projectPath": "C:\\Users\\tnanc\\Desktop\\Academic\\com-s-437\\nancet-base\\nancet-base\\nancet-base.csproj",
         "packagesPath": "C:\\Users\\tnanc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\tnanc\\Desktop\\Academic\\com-s-437\\nancet-Minigolf\\nancet-Minigolf\\obj\\",
+        "outputPath": "C:\\Users\\tnanc\\Desktop\\Academic\\com-s-437\\nancet-base\\nancet-base\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
