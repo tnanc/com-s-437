@@ -1,10 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\nancet-Minigolf",
-    "\\nancet-Minigolf\\nancet-Minigolf",
-    "\\nancet-Minigolf\\nancet-Minigolf\\Content"
+    "\\nancet-base",
+    "\\nancet-base\\nancet-base",
+    "\\nancet-base\\nancet-base\\Content"
   ],
-  "SelectedNode": "\\nancet-Minigolf\\nancet-Minigolf\\Game1.cs",
+  "SelectedNode": "\\Example.cs",
   "PreviewInSolutionExplorer": false
 }

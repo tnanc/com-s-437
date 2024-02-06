@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "chEr9VoP18RhogdqZ8nKICoDSZvhCHIsqAilHU+O81eV5zKG3OVrj9X/GyQGK5HSpQDu2ke0+HCWRbnWIb4cZg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\tnanc\\Desktop\\Academic\\com-s-437\\nancet-minigolf\\nancet-minigolf\\nancet-minigolf.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\tnanc\\.nuget\\packages\\monogame.content.builder.task\\3.8.1.303\\monogame.content.builder.task.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\tnanc\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.1.303\\monogame.framework.desktopgl.3.8.1.303.nupkg.sha512",
+    "C:\\Users\\tnanc\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.26\\microsoft.windowsdesktop.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\tnanc\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.26\\microsoft.netcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\tnanc\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.26\\microsoft.aspnetcore.app.ref.6.0.26.nupkg.sha512",
+    "C:\\Users\\tnanc\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.26\\microsoft.netcore.app.host.win-x64.6.0.26.nupkg.sha512"
+  ],
+  "logs": []
+}
