@@ -1,10 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\nancet-base",
-    "\\nancet-base\\nancet-base",
-    "\\nancet-base\\nancet-base\\Content"
+    "\\nancet-base\\nancet-base\\Content",
+    "\\nancet-minigolf",
+    "\\nancet-minigolf\\nancet-minigolf",
+    "\\nancet-minigolf\\nancet-minigolf\\Content"
   ],
-  "SelectedNode": "\\Example.cs",
+  "SelectedNode": "\\nancet-minigolf\\nancet-minigolf\\Content\\rock.png",
   "PreviewInSolutionExplorer": false
 }

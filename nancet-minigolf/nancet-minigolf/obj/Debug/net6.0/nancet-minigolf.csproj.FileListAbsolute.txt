@@ -30,3 +30,7 @@ C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\De
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\slopeDownColor.xnb
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\slopeUpColor.xnb
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\File.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\wall.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\blank.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\rock.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\rock1.xnb
