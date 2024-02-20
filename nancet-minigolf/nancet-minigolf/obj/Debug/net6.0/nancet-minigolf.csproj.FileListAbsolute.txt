@@ -34,3 +34,9 @@ C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\De
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\blank.xnb
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\rock.xnb
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\rock1.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\audience_applause.ogg
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\audience_applause.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\ball_bounce.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\bounce.ogg
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\bounce.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-minigolf\nancet-minigolf\bin\Debug\net6.0\Content\splash.xnb

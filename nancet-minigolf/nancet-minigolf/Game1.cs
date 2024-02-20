@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System;
@@ -11,6 +12,7 @@ namespace nancet_minigolf
         private Ball ball;
         private Rectangle[] course;
         private Wall[] walls;
+        private static SoundEffect[] sounds = new SoundEffect[4];
         private static int strokes;
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -44,6 +46,8 @@ namespace nancet_minigolf
                 {
                     velocity.X = (Mouse.GetState().X - position.X)/2;
                     velocity.Y = (Mouse.GetState().Y - position.Y)/2;
+                    sounds[0].Play();
+                    strength = (float)Math.Ceiling(strength * .75f);
                     strokes++;
                 }
 
@@ -163,11 +167,10 @@ namespace nancet_minigolf
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             Services.AddService(typeof(SpriteBatch), _spriteBatch);
 
-            /*
-             * TODO:
-             * add sounds for strokes, bounces, hole
-             * add ending effect when player wins
-             */
+            sounds[0] = Content.Load<SoundEffect>("ball_bounce");
+            sounds[1] = Content.Load<SoundEffect>("bounce");
+            sounds[2] = Content.Load<SoundEffect>("audience_applause");
+            sounds[3] = Content.Load<SoundEffect>("splash");
         }
 
         protected override void Update(GameTime gameTime)
@@ -180,6 +183,7 @@ namespace nancet_minigolf
             {
                 if (walls[i].isTouching(ball.hitbox))
                 {
+                    sounds[1].Play();
                     if (walls[i].isVertical) ball.velocity.X *= -.9f;
                     else ball.velocity.Y *= -.9f;
                 }
@@ -188,7 +192,7 @@ namespace nancet_minigolf
             if (course[2].Intersects(ball.hitbox))
             {
                 ball.velocity.X += ball.velocity.X>200 ? 0 : 5;
-                ball.velocity.Y += 1 * (ball.velocity.Y > 0 ? 1 : -1);
+                ball.velocity.Y += -.9f * (ball.velocity.Y > 0 ? 1 : -1);
             }
 
             if (course[3].Intersects(ball.hitbox))
@@ -197,12 +201,33 @@ namespace nancet_minigolf
                 ball.velocity.Y += .1f * (ball.velocity.Y > 0 ? 1 : -1);
             }
 
-            if (course[6].Intersects(ball.hitbox)) ball.velocity = 0.8f * Vector2.Reflect(ball.velocity, Vector2.Normalize(ball.velocity));
+            if (course[6].Intersects(ball.hitbox))
+            {
+                sounds[1].Play();
 
-            if (course[4].Intersects(ball.hitbox)) ball.Reset();
-            if (course[5].Intersects(ball.hitbox) && ball.velocity.X <= 10) ball.Reset();
+                //if (Math.Abs(ball.velocity.X) > Math.Abs(ball.velocity.Y)) ball.velocity.X *= -1;
+                //else ball.velocity.Y *= -1;
+                ball.velocity = 0.8f * Vector2.Reflect(ball.velocity, Vector2.Normalize(ball.velocity));
+            }
 
-            if (course[7].Intersects(ball.hitbox) && (ball.velocity.X < 50 && ball.velocity.Y < 50)) ball.Reset();
+            if (course[4].Intersects(ball.hitbox))
+            {
+                sounds[3].Play();
+                ball.Reset();
+            }
+
+            if (course[5].Intersects(ball.hitbox) && ball.velocity.X <= 10)
+            {
+                sounds[3].Play();
+                ball.Reset();
+            }
+
+            if (course[7].Intersects(ball.hitbox) && (ball.velocity.X < 75 && ball.velocity.Y < 75))
+            {
+                sounds[2].Play();
+                ball.Reset();
+                strokes = 0;
+            }
 
             base.Update(gameTime);
         }

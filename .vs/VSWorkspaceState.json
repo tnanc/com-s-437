@@ -1,11 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\nancet-base\\nancet-base\\Content",
     "\\nancet-minigolf",
-    "\\nancet-minigolf\\nancet-minigolf",
-    "\\nancet-minigolf\\nancet-minigolf\\Content"
+    "\\nancet-minigolf\\nancet-minigolf"
   ],
-  "SelectedNode": "\\nancet-minigolf\\nancet-minigolf\\Content\\rock.png",
+  "SelectedNode": "\\nancet-minigolf\\nancet-minigolf.sln",
   "PreviewInSolutionExplorer": false
 }

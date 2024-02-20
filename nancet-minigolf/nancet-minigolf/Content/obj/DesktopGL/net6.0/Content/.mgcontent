@@ -4,7 +4,10 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-minigolf/nancet-minigolf/Content/audience_applause.mp3</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-minigolf/nancet-minigolf/Content/ball_bounce.wav</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-minigolf/nancet-minigolf/Content/blank.png</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-minigolf/nancet-minigolf/Content/bounce.mp3</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-minigolf/nancet-minigolf/Content/courseColor.png</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-minigolf/nancet-minigolf/Content/downColor.png</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-minigolf/nancet-minigolf/Content/File.spritefont</File>
@@ -13,9 +16,14 @@
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-minigolf/nancet-minigolf/Content/rock1.png</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-minigolf/nancet-minigolf/Content/slopeDownColor.png</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-minigolf/nancet-minigolf/Content/slopeUpColor.png</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-minigolf/nancet-minigolf/Content/splash.wav</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-minigolf/nancet-minigolf/Content/wall.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
