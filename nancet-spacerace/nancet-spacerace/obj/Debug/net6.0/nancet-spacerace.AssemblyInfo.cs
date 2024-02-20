@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("nancet-spacerace")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6975c9a118b6cf05dd9f647a0b426188963157fc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8cd1b152610eb154fd4e166ffa9ae34304638a8a")]
 [assembly: System.Reflection.AssemblyProductAttribute("nancet-spacerace")]
 [assembly: System.Reflection.AssemblyTitleAttribute("nancet-spacerace")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

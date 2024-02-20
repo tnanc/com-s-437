@@ -3,15 +3,38 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
 using BEPUphysics;
+using System.Threading;
 
 namespace nancet_spacerace
 {
     public class Game1 : Game
     {
+        protected internal class Camera
+        {
+            public Vector3 position { get; set; }
+            public Vector3 direction { get; set; }
+            public Vector3 zAxis { get; set; }
+
+            public Camera()
+            {
+                position = Vector3.Zero;
+                direction = Vector3.Forward;
+                zAxis = Vector3.Up;
+            }
+        }
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
         private Space space = new Space();
+        private Camera camera { get; set; }
+
+        protected enum GameState { GAMEOVER, PLAYING, PAUSED , STOPPED };
+        protected GameState _state;
+
+        public static float time = 0f;
+
+        //private Timer _timer;
 
         public Game1()
         {
@@ -22,7 +45,7 @@ namespace nancet_spacerace
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            Services.AddService<Space>(space);
 
             base.Initialize();
         }

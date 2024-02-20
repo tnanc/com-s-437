@@ -1,7 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\nancet-spacerace",
+    "\\nancet-spacerace\\nancet-spacerace",
+    "\\nancet-spacerace\\nancet-spacerace\\obj\\Debug",
+    "\\nancet-spacerace\\nancet-spacerace\\obj\\Debug\\net6.0",
+    "\\nancet-spacerace\\nancet-spacerace\\obj\\Debug\\net6.0\\ref",
+    "\\nancet-spacerace\\nancet-spacerace\\obj\\Release",
+    "\\nancet-spacerace\\nancet-spacerace\\obj\\Release\\net6.0",
+    "\\nancet-spacerace\\nancet-spacerace\\obj\\Release\\net6.0\\ref",
+    "\\nancet-spacerace\\nancet-spacerace\\obj\\Release\\net6.0\\refint"
   ],
-  "SelectedNode": "\\nancet-base",
+  "SelectedNode": "\\nancet-spacerace\\nancet-spacerace.sln",
   "PreviewInSolutionExplorer": false
 }
