@@ -15,7 +15,7 @@ namespace nancet_spacerace
         private Model model;
         private Texture2D texture;
         public bool isActive, isVisible;
-        public Vector3 position;
+        public Vector3 position, rotation;
         public BEPUphysics.Entities.Prefabs.Cylinder ringPhysics, centerPhysics;
 
         public Ring(Game game) : base(game)
@@ -77,8 +77,6 @@ namespace nancet_spacerace
 
         public override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);

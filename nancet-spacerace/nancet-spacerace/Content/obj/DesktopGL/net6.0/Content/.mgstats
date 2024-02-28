@@ -1,1 +1,3 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Spaceship/Ship.fbx","C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/bin/DesktopGL/Content/Spaceship/Ship.xnb","ModelProcessor","ModelContent",21772,4632,0.365078
+"C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Spaceship/ShipTexture.png","C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/bin/DesktopGL/Content/Spaceship/ShipTexture.xnb","TextureProcessor","Texture2DContent",1928,1048661,0.0212582

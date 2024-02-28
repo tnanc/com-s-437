@@ -26,3 +26,6 @@ C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\obj\
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\obj\Debug\net6.0\nancet-spacerace.pdb
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\obj\Debug\net6.0\nancet-spacerace.genruntimeconfig.cache
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\obj\Debug\net6.0\ref\nancet-spacerace.dll
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\Ship.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\ShipTexture.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\ShipTexture_0.xnb
