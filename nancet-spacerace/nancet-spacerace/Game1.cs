@@ -4,12 +4,15 @@ using Microsoft.Xna.Framework.Input;
 
 using BEPUphysics;
 using System.Threading;
+//using System.Numerics;
 
 namespace nancet_spacerace
 {
     public class Camera
     {
-        public Matrix world, view, projection;
+        public Matrix world { get; private set; }
+        public Matrix view { get; private set; }
+        public Matrix projection { get; private set; }
         public Vector3 Position, Target, Up;
 
         public Camera()
@@ -32,6 +35,7 @@ namespace nancet_spacerace
                     effect.World = world;
                     effect.View = view;
                     effect.Projection = projection;
+                    effect.EnableDefaultLighting();
                 }
                 mesh.Draw();
             }
@@ -73,7 +77,7 @@ namespace nancet_spacerace
 
             ship = new Ship(this, Vector3.Zero);
 
-
+            IsMouseVisible = false;
 
             base.Initialize();
         }
@@ -84,6 +88,8 @@ namespace nancet_spacerace
 
             // TODO: use this.Content to load your game content here
         }
+
+        private static float[] previousMousePos = { 0, 0 };
 
         protected override void Update(GameTime gameTime)
         {

@@ -1,8 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\nancet-spacerace"
+    "\\nancet-spacerace",
+    "\\nancet-spacerace\\Content"
   ],
-  "SelectedNode": "\\nancet-spacerace\\Game1.cs",
+  "SelectedNode": "\\nancet-spacerace",
   "PreviewInSolutionExplorer": false
 }

@@ -12,8 +12,8 @@ namespace nancet_spacerace
     {
         private Model model;
         private Texture2D texture;
-        private BEPUphysics.Entities.Prefabs.Cone shipPhysics;
-        public Vector3 position, rotation;
+        private BEPUphysics.Entities.Prefabs.Sphere shipPhysics;
+        public Vector3 position, rotation; //(x,y,z) and (yaw,pitch,roll)
 
         public Ship(Game game) : base(game)
         {
@@ -24,7 +24,9 @@ namespace nancet_spacerace
         {
             this.position = position;
             rotation = Vector3.Zero;
-            shipPhysics = new BEPUphysics.Entities.Prefabs.Cone(ConversionHelper.MathConverter.Convert(position), 5, 5, 1);
+            shipPhysics = new BEPUphysics.Entities.Prefabs.Sphere(MathConverter.Convert(position), 1);
+            shipPhysics.Mass = 1;
+            shipPhysics.BecomeKinematic();
             Game.Services.GetService<Space>().Add(shipPhysics);
         }
 
@@ -46,12 +48,39 @@ namespace nancet_spacerace
         {
             // TODO: Add your update logic here
 
+            if (Keyboard.GetState().IsKeyDown(Keys.W)) shipPhysics.WorldTransform = MathConverter.Convert(Matrix.CreateRotationX(MathHelper.TwoPi / -360f)) * shipPhysics.WorldTransform;
+            else if (Keyboard.GetState().IsKeyDown(Keys.S)) shipPhysics.WorldTransform = MathConverter.Convert(Matrix.CreateRotationX(MathHelper.TwoPi / 360f)) * shipPhysics.WorldTransform;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.A)) shipPhysics.WorldTransform = MathConverter.Convert(Matrix.CreateRotationZ(MathHelper.TwoPi / 360f)) * shipPhysics.WorldTransform;
+            else if (Keyboard.GetState().IsKeyDown(Keys.D)) shipPhysics.WorldTransform = MathConverter.Convert(Matrix.CreateRotationZ(MathHelper.TwoPi / -360f)) * shipPhysics.WorldTransform;
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Q)) shipPhysics.WorldTransform = MathConverter.Convert(Matrix.CreateRotationY(MathHelper.TwoPi / 360f)) * shipPhysics.WorldTransform;
+            else if (Keyboard.GetState().IsKeyDown(Keys.E)) shipPhysics.WorldTransform = MathConverter.Convert(Matrix.CreateRotationY(MathHelper.TwoPi / -360f)) * shipPhysics.WorldTransform;
+
+
+            if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                if (Keyboard.GetState().IsKeyDown(Keys.LeftShift)) shipPhysics.WorldTransform = MathConverter.Convert(Matrix.CreateTranslation(new Vector3(0f, .1f, 0f))) * shipPhysics.WorldTransform;
+                else shipPhysics.WorldTransform = MathConverter.Convert(Matrix.CreateTranslation(new Vector3(0f,-.1f,0f))) * shipPhysics.WorldTransform;
+            }
+
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
-            Game.Services.GetService<Camera>().RenderModel(model);
+            Camera camera = Game.Services.GetService<Camera>();
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+                foreach (BasicEffect effect in mesh.Effects)
+                {
+                    effect.World = MathConverter.Convert(shipPhysics.WorldTransform);
+                    effect.View = camera.view;
+                    effect.Projection = camera.projection;
+                    effect.EnableDefaultLighting();
+                }
+                mesh.Draw();
+            }
 
             base.Draw(gameTime);
         }

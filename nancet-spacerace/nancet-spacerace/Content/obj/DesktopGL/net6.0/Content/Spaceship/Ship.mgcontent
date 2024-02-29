@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <SourceFile>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Spaceship/Ship.fbx</SourceFile>
-  <SourceTime>2024-02-27T11:45:00.0196569-06:00</SourceTime>
+  <SourceTime>2024-02-28T17:22:49.9735099-06:00</SourceTime>
   <DestFile>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/bin/DesktopGL/Content/Spaceship/Ship.xnb</DestFile>
-  <DestTime>2024-02-27T11:48:37.5182048-06:00</DestTime>
+  <DestTime>2024-02-28T17:23:53.4134371-06:00</DestTime>
   <Importer>FbxImporter</Importer>
   <ImporterTime>2022-07-26T06:44:56-05:00</ImporterTime>
   <Processor>ModelProcessor</Processor>

@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework;
  * From: https://github.com/TomTheTornado/COMS437/blob/main/Project2/SpaceRace/ConversionHelper.cs
  */
 
-namespace ConversionHelper
+namespace nancet_spacerace
 {
     /// <summary>
     /// Helps convert between XNA math types and the BEPUphysics replacement math types.
