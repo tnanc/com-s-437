@@ -13,10 +13,10 @@ namespace nancet_spacerace
         public static List<Ring> courseSequence = new List<Ring>();
         private int index;
         private Model model;
-        private Texture2D texture;
+        private Texture2D[] textures = new Texture2D[2];
         public bool isActive, isVisible;
         public Vector3 position, rotation;
-        public BEPUphysics.Entities.Prefabs.Cylinder ringPhysics, centerPhysics;
+        public BEPUphysics.Entities.Prefabs.Sphere ringPhysics, centerPhysics;
 
         public Ring(Game game) : base(game)
         {
@@ -30,6 +30,9 @@ namespace nancet_spacerace
         public Ring(Game game, Vector3 position) : this(game)
         {
             this.position = position;
+            this.rotation = Vector3.Zero;
+            ringPhysics = new BEPUphysics.Entities.Prefabs.Sphere(MathConverter.Convert(position), 1);
+            Game.Services.GetService<Space>().Add(ringPhysics);
             //initialize physics objects here
         }
 
@@ -66,11 +69,16 @@ namespace nancet_spacerace
         protected override void LoadContent()
         {
             // TODO: Load your game content here
+            textures[0] = Game.Content.Load<Texture2D>("Ring\\ringPowerTexture");
+            textures[1] = Game.Content.Load<Texture2D>("Ring\\ringMetalTexture");
+            model = Game.Content.Load<Model>("Ring\\Ring2");
         }
 
         public override void Update(GameTime gameTime)
         {
             // TODO: Add your update logic here
+            if (Keyboard.GetState().IsKeyDown(Keys.Up)) ringPhysics.WorldTransform = MathConverter.Convert(Matrix.CreateTranslation(new Vector3(0f, .1f, 0f))) * ringPhysics.WorldTransform;
+            else if (Keyboard.GetState().IsKeyDown(Keys.Down)) ringPhysics.WorldTransform = MathConverter.Convert(Matrix.CreateTranslation(new Vector3(0f, -.1f, 0f))) * ringPhysics.WorldTransform;
 
             base.Update(gameTime);
         }
@@ -78,6 +86,20 @@ namespace nancet_spacerace
         public override void Draw(GameTime gameTime)
         {
             // TODO: Add your drawing code here
+            /*
+            Camera camera = Game.Services.GetService<Camera>();
+            foreach (ModelMesh mesh in model.Meshes)
+            {
+                foreach (BasicEffect effect in mesh.Effects)
+                {
+                    effect.World = camera.World;
+                    effect.View = camera.View;
+                    effect.Projection = camera.Projection;
+                    effect.EnableDefaultLighting();
+                }
+                mesh.Draw();
+            }
+            */
 
             base.Draw(gameTime);
         }

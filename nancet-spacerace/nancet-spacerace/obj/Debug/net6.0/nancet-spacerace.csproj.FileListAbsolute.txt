@@ -1,3 +1,16 @@
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Ring\ring.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Ring\ringTexture.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Ring\ringTexture_0.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\E 45 Aircraft_fbx.7.4_binary.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\E 45 Aircraft_obj.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\textures\E-45 _col.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\textures\E-45 _col_3.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\textures\E-45-nor_1.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\textures\E-45-steel detail_2_col.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\textures\E-45-steel detail_2_col_0.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\textures\E-45_col_2.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\textures\E-45_glass_nor_.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\textures\E-45_REF 1.xnb
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\nancet-spacerace.exe
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\nancet-spacerace.deps.json
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\nancet-spacerace.runtimeconfig.json
@@ -26,6 +39,15 @@ C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\obj\
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\obj\Debug\net6.0\nancet-spacerace.pdb
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\obj\Debug\net6.0\nancet-spacerace.genruntimeconfig.cache
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\obj\Debug\net6.0\ref\nancet-spacerace.dll
-C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\Ship.xnb
-C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\ShipTexture.xnb
-C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\ShipTexture_0.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\Intergalactic_Spaceship.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Ring\Ring2.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Ring\ringPowerTexture.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Ring\ringPowerTexture_0.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Ring\ringMetalTexture.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Ring\ringMetalTexture_0.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\Spaceships_8.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\Spaceship_Texture.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Spaceship\Spaceship_Texture_0.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Skybox\Skybox.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Skybox\SpaceTexture.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Skybox\SpaceTexture_0.xnb

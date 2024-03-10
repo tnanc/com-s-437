@@ -8,51 +8,63 @@ using System.Threading;
 
 namespace nancet_spacerace
 {
-    public class Camera
+    public class Camera : ObjectSpace
     {
-        public Matrix world { get; private set; }
-        public Matrix view { get; private set; }
-        public Matrix projection { get; private set; }
-        public Vector3 Position, Target, Up;
-
-        public Camera()
+        private Game game;
+        private float Velocity { get; set; } = 30f;
+        private float Radians { get; set; } = 60f;
+        
+        private void RenderWorldView()
         {
-            Position = new Vector3(0, 0, 10);
-            Target = Vector3.Zero;
-            Up = Vector3.UnitY;
-
-            world = Matrix.CreateTranslation(new Vector3(0, 0, 0));
-            view = Matrix.CreateLookAt(Position, Target, Up);
-            projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(45), 800f / 480f, 0.1f, 100f);
+            World = Matrix.CreateWorld(Position, Forward, Up);
+            ObjectSpace.RenderView(this);
         }
 
-        public void RenderModel(Model model)
+        public void RotateAround(Vector3 axis, bool positive, GameTime gameTime)
         {
-            foreach (ModelMesh mesh in model.Meshes)
-            {
-                foreach (BasicEffect effect in mesh.Effects)
-                {
-                    effect.World = world;
-                    effect.View = view;
-                    effect.Projection = projection;
-                    effect.EnableDefaultLighting();
-                }
-                mesh.Draw();
-            }
-            
+            Forward = Vector3.TransformNormal(Forward, Matrix.CreateFromAxisAngle(
+                axis, MathHelper.ToRadians(Radians * (float)gameTime.ElapsedGameTime.TotalSeconds * (positive ? 1 : -1))));
+            RenderWorldView();
+        }
+        public void Roll(bool clockwise, GameTime gameTime)
+        {
+            Vector3 tmp = Position;
+            World *= Matrix.CreateFromAxisAngle(Forward, MathHelper.ToRadians(Radians * (float)gameTime.ElapsedGameTime.TotalSeconds * (clockwise ? 1 : -1)));
+            Position = tmp;
+            RenderWorldView();
+        }
+        public void Move(bool forward, GameTime gameTime)
+        {
+            Position += (Forward * Velocity) * 
+                (float)gameTime.ElapsedGameTime.TotalSeconds * (forward ? 1 : -1);
+            RenderWorldView();
+        }
+
+        public Camera(Game game) : base(game.GraphicsDevice,null,null)
+        {
+            ObjectSpace.RenderView(this);
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            if(Keyboard.GetState().IsKeyDown(Keys.W)) RotateAround(World.Right, true, gameTime);
+            else if (Keyboard.GetState().IsKeyDown(Keys.S)) RotateAround(World.Right, false, gameTime);
+            if (Keyboard.GetState().IsKeyDown(Keys.A)) RotateAround(World.Up, true, gameTime);
+            else if (Keyboard.GetState().IsKeyDown(Keys.D)) RotateAround(World.Up, false, gameTime);
+            if (Keyboard.GetState().IsKeyDown(Keys.Q)) Roll(false, gameTime);
+            else if (Keyboard.GetState().IsKeyDown(Keys.E)) Roll(true, gameTime);
+            if (Keyboard.GetState().IsKeyDown(Keys.Space)) Move(!(Keyboard.GetState().IsKeyDown(Keys.LeftShift)), gameTime);
         }
     }
-
     public class Game1 : Game
     {
-        
-
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
         private Space space = new Space();
-        private Camera camera { get; set; }
-        private Ship ship;
+        private Camera camera;
+        public static Ship ship;
+        private Skybox skybox;
 
         protected enum GameState { GAMEOVER, PLAYING, PAUSED , STOPPED };
         protected GameState _state;
@@ -72,10 +84,21 @@ namespace nancet_spacerace
         {
             Services.AddService<Space>(space);
 
-            camera = new Camera();
+            //camera = new Camera(this);
+            //Services.AddService<Camera>(camera);
+
+            //camera = new Basic3dExampleCamera(GraphicsDevice, Window);
+            camera = new Camera(this);
+
+            camera.Position = new Vector3(2, 10, 52);
+            camera.Forward = Vector3.Forward;
             Services.AddService<Camera>(camera);
 
-            ship = new Ship(this, Vector3.Zero);
+            ship = new Ship(this, new Vector3(10,10,10));
+            new Ring(this, new Vector3(0, 0, -10));
+            skybox = new Skybox(this);
+
+            
 
             IsMouseVisible = false;
 
@@ -96,14 +119,15 @@ namespace nancet_spacerace
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            camera.Update(gameTime);
+            space.Update();
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(Color.Indigo);
 
             // TODO: Add your drawing code here
 

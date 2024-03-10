@@ -4,10 +4,24 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Spaceship/Ship.fbx</File>
-    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Spaceship/ShipTexture.png</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Ring/ring.fbx</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Ring/Ring2.fbx</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Ring/ringMetalTexture.png</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Ring/ringPowerTexture.png</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Ring/ringTexture.png</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Skybox/Skybox.fbx</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Skybox/SpaceTexture.png</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Spaceship/Spaceship_Texture.png</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Spaceship/Spaceships_8.fbx</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
