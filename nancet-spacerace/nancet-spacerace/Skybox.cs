@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using BEPUphysics;
 using System.Threading;
 using System.Collections.Generic;
+using static nancet_spacerace.Game1;
 
 namespace nancet_spacerace
 {
@@ -25,8 +26,8 @@ namespace nancet_spacerace
 
         protected override void LoadContent()
         {
-            texture = Game.Content.Load<Texture2D>("Skybox\\SpaceTexture");
-            model = Game.Content.Load<Model>("Skybox\\Skybox");
+            texture = Game.Content.Load<Texture2D>("Skybox\\Stars");
+            model = Game.Content.Load<Model>("Skybox\\Model");
             base.LoadContent();
         }
 
@@ -39,7 +40,9 @@ namespace nancet_spacerace
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
-                    effect.World = Matrix.CreateScale(1000f);
+                    if (_state == GameState.PAUSED) effect.Alpha = .5f;
+                    else if (_state == GameState.PLAYING) effect.Alpha = 1;
+                    effect.World = Matrix.CreateScale(10000f);
                     effect.View = ObjectSpace.View;
                     effect.Projection = ObjectSpace.Projection;
                     effect.EnableDefaultLighting();

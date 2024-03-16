@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Text;
+using BEPUphysics.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -17,9 +18,14 @@ namespace nancet_spacerace
      */
     public class ObjectSpace
     {
-        protected Model Model { get; set; }
-        protected Texture2D Texture { get; set; }
-        protected BEPUphysics.Entities.Prefabs.Sphere PhysicsObject;
+        public static void Events_Collision(BEPUphysics.BroadPhaseEntries.MobileCollidables.EntityCollidable sender, BEPUphysics.BroadPhaseEntries.Collidable other, BEPUphysics.NarrowPhaseSystems.Pairs.CollidablePairHandler pair, BEPUphysics.CollisionTests.ContactData contact)
+        {
+            Console.WriteLine("Collision Detected");
+        }
+
+        public Model Model { get; set; }
+        public Texture2D Texture { get; set; }
+        public BEPUphysics.Entities.Prefabs.Sphere PhysicsObject;
         private Vector3 upward;
         private Matrix worldSpace = Matrix.Identity;
         private static Matrix viewSpace = Matrix.Identity, projection = Matrix.Identity;
@@ -36,7 +42,7 @@ namespace nancet_spacerace
         }
         public Vector3 Up
         {
-            get { return upward; }
+            get { return worldSpace.Up; }
             set { upward = value; worldSpace = Matrix.CreateWorld(Position, Forward, value); }
         }
 
@@ -64,10 +70,8 @@ namespace nancet_spacerace
             Projection = Matrix.CreatePerspectiveFieldOfView(MathHelper.ToRadians(fovInDegrees), aspectRatio, nearClip, farClip);
         }
 
-        public ObjectSpace(GraphicsDevice graphics, Model model, Texture2D texture)
+        public ObjectSpace(GraphicsDevice graphics)
         {
-            this.Model = model;
-            this.Texture = texture;
             if(fovInDegrees == 0.0f) InitializeSpace(graphics);
             upward = Vector3.Up;
             World = Matrix.CreateWorld(Position, Forward, Up);

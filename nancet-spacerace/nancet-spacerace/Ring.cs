@@ -5,58 +5,63 @@ using Microsoft.Xna.Framework.Input;
 using BEPUphysics;
 using System.Threading;
 using System.Collections.Generic;
+using System.Diagnostics;
+using static nancet_spacerace.Game1;
 
 namespace nancet_spacerace
 {
     public class Ring : DrawableGameComponent
     {
         public static List<Ring> courseSequence = new List<Ring>();
-        private int index;
-        private Model model;
-        private Texture2D[] textures = new Texture2D[2];
-        public bool isActive, isVisible;
-        public Vector3 position, rotation;
-        public BEPUphysics.Entities.Prefabs.Sphere ringPhysics, centerPhysics;
+        public static int missedRings = 0;
+        public bool isVisible;
+        private ObjectSpace ring;
+        private void Events_InitialCollisionDetected(BEPUphysics.BroadPhaseEntries.MobileCollidables.EntityCollidable sender, BEPUphysics.BroadPhaseEntries.Collidable other, BEPUphysics.NarrowPhaseSystems.Pairs.CollidablePairHandler pair)
+        {
+            if(isVisible) this.pass();
+        }
 
         public Ring(Game game) : base(game)
         {
             game.Components.Add(this);
             courseSequence.Add(this);
-            index = courseSequence.Count - 1;
-            isActive = (index==0);
-            isVisible = true;
+            isVisible = false;
         }
 
-        public Ring(Game game, Vector3 position) : this(game)
+        public Ring(Game game, Vector3 position, Vector3 forward) : this(game)
         {
-            this.position = position;
-            this.rotation = Vector3.Zero;
-            ringPhysics = new BEPUphysics.Entities.Prefabs.Sphere(MathConverter.Convert(position), 1);
-            Game.Services.GetService<Space>().Add(ringPhysics);
-            //initialize physics objects here
+            ring = new ObjectSpace(Game.GraphicsDevice);
+            ring.Position = position;
+            ring.Forward = forward;
+            ring.PhysicsObject = new BEPUphysics.Entities.Prefabs.Sphere(MathConverter.Convert(ring.Position), 1);
+            ring.PhysicsObject.Mass = 0;
+            ring.PhysicsObject.BecomeKinematic();
+            ring.PhysicsObject.CollisionInformation.Events.InitialCollisionDetected += Events_InitialCollisionDetected;
+            ring.PhysicsObject.WorldTransform = MathConverter.Convert(ring.World);
+            Game.Services.GetService<Space>().Add(ring.PhysicsObject);
         }
 
-        public void setActive()
+        private void miss()
         {
-            isActive = true;
-            //set texture to be green, might just happen in the Draw method
-            for (int i=1; index-i >= 0 && courseSequence[index - i].isVisible; i++) {
-                courseSequence[index - i].miss();
+            Game1.time[1] += 10f;
+            missedRings++;
+        }
+
+        private void pass()
+        {
+            int i = 0;
+            while (courseSequence[0] != this)
+            {
+                courseSequence[0].isVisible = false;
+                courseSequence.RemoveAt(0);
+                if(i > 0) miss();
+                if (courseSequence.Count <= 0) break;
+                i++;
             }
-        }
-
-        public void pass()
-        {
-            isActive = false;
-            isVisible = false;
-            courseSequence[index+1].setActive();
-        }
-
-        public void miss()
-        {
-            isActive = false;
-            isVisible = false;
-            Game1.time += 10f;
+            if (courseSequence.Count <= 0) return;
+            courseSequence[0].isVisible = false;
+            courseSequence.RemoveAt(0);
+            if (i > 0) miss();
         }
 
         public override void Initialize()
@@ -69,37 +74,52 @@ namespace nancet_spacerace
         protected override void LoadContent()
         {
             // TODO: Load your game content here
-            textures[0] = Game.Content.Load<Texture2D>("Ring\\ringPowerTexture");
-            textures[1] = Game.Content.Load<Texture2D>("Ring\\ringMetalTexture");
-            model = Game.Content.Load<Model>("Ring\\Ring2");
+            ring.Texture = Game.Content.Load<Texture2D>("Ring\\Ring_Default");
+            ring.Model = Game.Content.Load<Model>("Ring\\Ring");
+            
         }
 
         public override void Update(GameTime gameTime)
         {
             // TODO: Add your update logic here
+            /*
             if (Keyboard.GetState().IsKeyDown(Keys.Up)) ringPhysics.WorldTransform = MathConverter.Convert(Matrix.CreateTranslation(new Vector3(0f, .1f, 0f))) * ringPhysics.WorldTransform;
             else if (Keyboard.GetState().IsKeyDown(Keys.Down)) ringPhysics.WorldTransform = MathConverter.Convert(Matrix.CreateTranslation(new Vector3(0f, -.1f, 0f))) * ringPhysics.WorldTransform;
-
+            */
             base.Update(gameTime);
         }
 
         public override void Draw(GameTime gameTime)
         {
             // TODO: Add your drawing code here
-            /*
-            Camera camera = Game.Services.GetService<Camera>();
-            foreach (ModelMesh mesh in model.Meshes)
+            if(!isVisible) return;
+
+            foreach (ModelMesh mesh in ring.Model.Meshes)
             {
                 foreach (BasicEffect effect in mesh.Effects)
                 {
-                    effect.World = camera.World;
-                    effect.View = camera.View;
-                    effect.Projection = camera.Projection;
+                    if (_state == GameState.PAUSED) effect.Alpha = .25f;
+                    else if (_state == GameState.PLAYING)
+                    {
+                        if (courseSequence[0] == this)
+                        {
+                            effect.Texture = Game.Content.Load<Texture2D>("Ring\\Ring_Active");
+                            effect.Alpha = 1f;
+                        }
+                        else
+                        {
+                            effect.Texture = ring.Texture;
+                            effect.Alpha = 0.5f;
+                        }
+                    }
+                    effect.World = ring.World;
+                    effect.View = ObjectSpace.View;
+                    effect.Projection = ObjectSpace.Projection;
                     effect.EnableDefaultLighting();
                 }
                 mesh.Draw();
             }
-            */
+            
 
             base.Draw(gameTime);
         }
