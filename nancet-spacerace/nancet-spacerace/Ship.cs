@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System;
 using System.Diagnostics;
 using System.Linq;
+using Microsoft.Xna.Framework.Media;
 
 namespace nancet_spacerace
 {
@@ -21,6 +22,7 @@ namespace nancet_spacerace
         private MouseState prevMouse;
         private Random random;
         private float isShaking = 0;
+        private Song thrust;
         public float Boost { get; private set; } = 2.5f;
         private static void Events_InitialCollisionDetected(BEPUphysics.BroadPhaseEntries.MobileCollidables.EntityCollidable sender, BEPUphysics.BroadPhaseEntries.Collidable other, BEPUphysics.NarrowPhaseSystems.Pairs.CollidablePairHandler pair)
         {
@@ -51,6 +53,10 @@ namespace nancet_spacerace
             // TODO: Load your game content here
             ship.Texture = Game.Content.Load<Texture2D>("Spaceship\\CockpitTexture");
             ship.Model = Game.Content.Load<Model>("Spaceship\\Cockpit");
+            thrust = Game.Content.Load<Song>("Sounds\\Rocket Thrusters");
+            MediaPlayer.Play(thrust);
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Volume = 0;
         }
 
         public override void Update(GameTime gameTime)
@@ -80,12 +86,13 @@ namespace nancet_spacerace
                 if (keys.IsKeyDown(Keys.Q)) ship.PhysicsObject.WorldTransform = MathConverter.Convert(Matrix.CreateRotationZ(Radians)) * ship.PhysicsObject.WorldTransform;
                 else if (keys.IsKeyDown(Keys.E)) ship.PhysicsObject.WorldTransform = MathConverter.Convert(Matrix.CreateRotationZ(Radians * -1f)) * ship.PhysicsObject.WorldTransform;
 
-                if(Boost < 2.5f && !keys.IsKeyDown(Keys.LeftControl)) Boost += (float)gameTime.ElapsedGameTime.TotalSeconds*2;
+                if(Boost < 2.5f && !(keys.IsKeyDown(Keys.LeftControl) || keys.IsKeyDown(Keys.RightControl))) Boost += (float)gameTime.ElapsedGameTime.TotalSeconds*2;
 
                 //Thrust and Booster
                 if (keys.IsKeyDown(Keys.Space))
                 {
-                    if (keys.IsKeyDown(Keys.LeftControl))
+                    MediaPlayer.Volume = (isShaking > .2f ? 2 : .5f);
+                    if (keys.IsKeyDown(Keys.LeftControl) || keys.IsKeyDown(Keys.RightControl))
                     {
                         if (isShaking < .5)
                         {
@@ -98,11 +105,11 @@ namespace nancet_spacerace
                     //Left Shift to go backwards, Left Control for added speed
                     if (keys.IsKeyDown(Keys.LeftShift)) ship.PhysicsObject.WorldTransform *= MathConverter.Convert(Matrix.CreateTranslation((ship.Forward * Velocity * (isShaking > .2f ? 3 : 1) * -0.8f) * (float)gameTime.ElapsedGameTime.TotalSeconds));
                     else ship.PhysicsObject.WorldTransform *= MathConverter.Convert(Matrix.CreateTranslation((ship.Forward * Velocity * (isShaking>0 && Boost>0 ? isShaking*5 : 1)) * (float)gameTime.ElapsedGameTime.TotalSeconds));
-                }
+                } else MediaPlayer.Volume = 0;
 
                 ship.World = MathConverter.Convert(ship.PhysicsObject.WorldTransform);
                 ObjectSpace.RenderView(ship);
-            }
+            } else MediaPlayer.Volume = 0; 
 
             prevMouse = mouse;
 

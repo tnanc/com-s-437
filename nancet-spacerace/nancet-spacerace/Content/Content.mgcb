@@ -51,6 +51,18 @@
 /processorParam:TextureFormat=Compressed
 /build:2D/Timer.spritefont
 
+#begin 2D/Wings.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:2D/Wings.png
+
 #begin Ring/Ring_Active.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -124,6 +136,18 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Skybox/Stars.jpg
+
+#begin Sounds/Air Plane Ding.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:Sounds/Air Plane Ding.wav
+
+#begin Sounds/Rocket Thrusters.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:Sounds/Rocket Thrusters.mp3
 
 #begin Spaceship/Cockpit.fbx
 /importer:FbxImporter

@@ -8,15 +8,21 @@
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/2D/Pixel_White.png</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/2D/Star.png</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/2D/Timer.spritefont</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/2D/Wings.png</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Ring/Ring_Active.png</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Ring/Ring_Default.png</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Ring/Ring.fbx</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Skybox/Model.fbx</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Skybox/Stars.jpg</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Sounds/Air Plane Ding.wav</File>
+    <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Sounds/Rocket Thrusters.mp3</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Spaceship/Cockpit.fbx</File>
     <File>C:/Users/tnanc/Desktop/Academic/com-s-437/nancet-spacerace/nancet-spacerace/Content/Spaceship/CockpitTexture.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

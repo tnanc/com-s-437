@@ -8,6 +8,10 @@ using System;
 using System.Diagnostics;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using System.ComponentModel.Design;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.VisualBasic;
+using Microsoft.Xna.Framework.Audio;
 //using System.Numerics;
 
 namespace nancet_spacerace
@@ -19,10 +23,12 @@ namespace nancet_spacerace
             public static List<Level> levels = new List<Level>();
             public Ring[] rings;
             public int[] starScores = new int[3];
-            public Level(Ring[] rings, int[] starTimeScoresLowToHigh)
+            public String introText;
+            public Level(Ring[] rings, int[] starTimeScoresLowToHigh, String introText)
             {
                 this.rings = rings;
                 starScores = starTimeScoresLowToHigh;
+                this.introText = introText;
                 levels.Add(this);
             }
             public static void LoadLevel(int number)
@@ -50,9 +56,10 @@ namespace nancet_spacerace
         private Ship ship;
         private Skybox skybox;
         private SpriteFont timer, dialogue;
-        private Texture2D star, pixel_white;
+        private Texture2D star, pixel_white, wings;
+        private SoundEffect ding;
 
-        public enum GameState { GAMEOVER, PLAYING, PAUSED, STOPPED };
+        public enum GameState { GAMEOVER, PLAYING, PAUSED, LEVELSTART, STOPPED };
         public static GameState _state;
 
         public static float[] time = new float[2];
@@ -70,7 +77,7 @@ namespace nancet_spacerace
         {
             Mouse.SetPosition(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2);
 
-            _state = GameState.PLAYING;
+            _state = GameState.LEVELSTART;
             Services.AddService<Space>(space);
 
             ship = new Ship(this);
@@ -88,14 +95,16 @@ namespace nancet_spacerace
                     new Ring(this, new Vector3(28, 0, -10), new Vector3(1, 0, 1)),
                     new Ring(this, new Vector3(30, 0, -5), Vector3.Forward)
                 },
-                new int[] {13,16,24}
+                new int[] {13,16,24},
+                "Alright, Rookie. You've passed all the written tests.Now, put that knowledge to use!\nEarn all three stars by hitting all rings within the time limit, without skipping any.\nActivate thrusters with [space]!"
             );
             new Level(new Ring[]
                 {
                     new Ring(this, new Vector3(0,0,-5), Vector3.Forward),
                     new Ring(this, new Vector3(0,0,-50), Vector3.Forward)
                 },
-                new int[] {7,8,9}
+                new int[] {7,8,9},
+                "For this test, you'll need to overclock your thrusters. Boost with [ctrl]!\nWhen your boosters overheat, release [ctrl] so they can recharge.\nThis test relies on speed. Good luck!"
             );
             new Level(new Ring[]
                 {
@@ -117,7 +126,8 @@ namespace nancet_spacerace
                     new Ring(this, new Vector3(10,7,-10), Vector3.Left),
                     new Ring(this, new Vector3(-5,7,-10), Vector3.Left),
                 },
-                new int[] {17,20,27}
+                new int[] {17,20,27},
+                "You've made it to your final test. You'll have to utilize all your skills to pass.\nTry not to get disoriented, Rookie. Your ship is your closest ally.\nIf you pass this test, you'll finally earn your wings."
             );
 
             Level.LoadLevel(0);
@@ -136,8 +146,9 @@ namespace nancet_spacerace
             dialogue = Content.Load<SpriteFont>("2D\\Dialogue");
             star = Content.Load<Texture2D>("2D\\Star");
             pixel_white = Content.Load<Texture2D>("2D\\Pixel_White");
-
-            // TODO: use this.Content to load your game content here
+            wings = Content.Load<Texture2D>("2D\\Wings");
+            ding = Content.Load<SoundEffect>("Sounds\\Air Plane Ding");
+            ding.Play();
         }
 
         protected override void Update(GameTime gameTime)
@@ -147,8 +158,12 @@ namespace nancet_spacerace
                 Exit();
             }
 
-            if (Keyboard.GetState().CapsLock) _state = GameState.PAUSED;
-            else _state = GameState.PLAYING;
+            if(_state == GameState.PLAYING || _state == GameState.PAUSED)
+            {
+                if (Keyboard.GetState().CapsLock) _state = GameState.PAUSED;
+                else _state = GameState.PLAYING;
+            }
+            
             space.Update();
 
             if(Ring.courseSequence.Count <= 0) _state = GameState.GAMEOVER;
@@ -162,15 +177,18 @@ namespace nancet_spacerace
 
             if (_state == GameState.GAMEOVER)
             {
-                if (Keyboard.GetState().IsKeyDown(Keys.Enter))
+                if (Keyboard.GetState().IsKeyDown(Keys.Enter) && Level.levels.Count > 1)
                 {
                     Level.NextLevel();
                     ship.Reset();
                     time = new float[2] { 0, 0 };
-                    _state = GameState.PLAYING;
+                    _state = GameState.LEVELSTART;
+                    ding.Play();
                 }
             }
-            
+
+            if (_state == GameState.LEVELSTART && Keyboard.GetState().IsKeyDown(Keys.Space)) _state = GameState.PLAYING;
+
             base.Update(gameTime);
         }
 
@@ -188,15 +206,32 @@ namespace nancet_spacerace
             GraphicsDevice.SamplerStates[0] = SamplerState.LinearClamp;
 
             _spriteBatch.Begin();
-
-            if(_state == GameState.GAMEOVER)
+            if (_state == GameState.LEVELSTART)
+            {
+                _spriteBatch.Draw(pixel_white, new Rectangle(0, GraphicsDevice.Viewport.Height - 100, GraphicsDevice.Viewport.Width, 100), new Color(5,0,30));
+                _spriteBatch.DrawString(dialogue, Level.levels[0].introText, new Vector2(10, GraphicsDevice.Viewport.Height - 90), Color.Aqua);
+            }
+            else if(_state == GameState.GAMEOVER)
             {
                 _spriteBatch.DrawString(timer, ((int)time[0]).ToString() + ":" + Math.Round(time[1], 2).ToString(), new Vector2(GraphicsDevice.Viewport.Width / 2 - 50, GraphicsDevice.Viewport.Height / 2 - 100), Color.Aqua);
                 _spriteBatch.DrawString(dialogue, "Missed: " + Ring.missedRings.ToString(), new Vector2(GraphicsDevice.Viewport.Width / 2 - 50, GraphicsDevice.Viewport.Height / 2 + 100), Color.Aqua);
-                if(Level.levels.Count > 1) _spriteBatch.DrawString(dialogue, "Press [ENTER] for next level", new Vector2(GraphicsDevice.Viewport.Width / 2 - 150, GraphicsDevice.Viewport.Height / 2 + 125), Color.Aqua);
-                _spriteBatch.Draw(star, new Rectangle(GraphicsDevice.Viewport.Width / 2 - 25, GraphicsDevice.Viewport.Height / 2 - 25, 50, 50), (time[0] * 60 + time[1] > Level.levels[0].starScores[0] ? Color.Black : Color.White));
-                _spriteBatch.Draw(star, new Rectangle(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2, 50, 50), (time[0] * 60 + time[1] > Level.levels[0].starScores[1] ? Color.Black : Color.White));
-                _spriteBatch.Draw(star, new Rectangle(GraphicsDevice.Viewport.Width / 2 + 50, GraphicsDevice.Viewport.Height / 2, 50, 50), (time[0] * 60 + time[1] > Level.levels[0].starScores[2] ? Color.Black : Color.White));
+                
+                if (Level.levels.Count > 1)
+                {
+                    _spriteBatch.Draw(star, new Rectangle(GraphicsDevice.Viewport.Width / 2 - 25, GraphicsDevice.Viewport.Height / 2 - 25, 50, 50), (time[0] * 60 + time[1] > Level.levels[0].starScores[0] ? Color.Black : Color.White));
+                    _spriteBatch.Draw(star, new Rectangle(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2, 50, 50), (time[0] * 60 + time[1] > Level.levels[0].starScores[1] ? Color.Black : Color.White));
+                    _spriteBatch.Draw(star, new Rectangle(GraphicsDevice.Viewport.Width / 2 + 50, GraphicsDevice.Viewport.Height / 2, 50, 50), (time[0] * 60 + time[1] > Level.levels[0].starScores[2] ? Color.Black : Color.White));
+                    _spriteBatch.DrawString(dialogue, "Press [ENTER] for next level", new Vector2(GraphicsDevice.Viewport.Width / 2 - 150, GraphicsDevice.Viewport.Height / 2 + 125), Color.Aqua);
+                }
+                else
+                {
+                    _spriteBatch.Draw(wings, new Rectangle(GraphicsDevice.Viewport.Width / 2 - 25, GraphicsDevice.Viewport.Height / 2 - 25, 50, 50), (time[0] * 60 + time[1] > Level.levels[0].starScores[0] ? Color.Black : Color.White));
+                    _spriteBatch.Draw(wings, new Rectangle(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2, 50, 50), (time[0] * 60 + time[1] > Level.levels[0].starScores[1] ? Color.Black : Color.White));
+                    _spriteBatch.Draw(wings, new Rectangle(GraphicsDevice.Viewport.Width / 2 + 50, GraphicsDevice.Viewport.Height / 2, 50, 50), (time[0] * 60 + time[1] > Level.levels[0].starScores[2] ? Color.Black : Color.White));
+                    _spriteBatch.Draw(pixel_white, new Rectangle(0, GraphicsDevice.Viewport.Height - 100, GraphicsDevice.Viewport.Width, 100), new Color(5, 0, 30));
+                    if (time[0] * 60 + time[1] <= Level.levels[0].starScores[0]) _spriteBatch.DrawString(dialogue, "Congratulations, Cadet.\n\nThe United Space Exploration Federation is proud to have you.", new Vector2(10, GraphicsDevice.Viewport.Height - 90), Color.Aqua);
+                    else _spriteBatch.DrawString(dialogue, "Sorry, Rookie.\nThe United Space Exploration Federation only accepts the best.\nTry again next year.", new Vector2(10, GraphicsDevice.Viewport.Height - 90), Color.Aqua);
+                }
             } else
             {
                 _spriteBatch.DrawString(timer, ((int)time[0]).ToString() + ":" + Math.Round(time[1], 2).ToString(), new Vector2(GraphicsDevice.Viewport.Width - 150, 5), Color.Aqua);

@@ -52,3 +52,7 @@ C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\2D\Pixel_White.xnb
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\2D\Star.xnb
 C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\2D\Timer.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Sounds\Air Plane Ding.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Sounds\Rocket Thrusters.ogg
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\Sounds\Rocket Thrusters.xnb
+C:\Users\tnanc\Desktop\Academic\com-s-437\nancet-spacerace\nancet-spacerace\bin\Debug\net6.0\Content\2D\Wings.xnb
